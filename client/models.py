@@ -8,6 +8,8 @@ class Client(models.Model):
     middle_name = models.CharField(max_length=50, verbose_name='Отчество', **NULLEBLE)
     
     fio = models.CharField(max_length=150, verbose_name='Ф.И.О.', editable=False)
+    email = models.EmailField(verbose_name='Электронная почта', validators=[models.EmailValidator()])
+    comment = models.TextField(verbose_name='Комментарий', **NULLEBLE)
     
     def save(self, *args, **kwargs):
         self.fio = f"{self.last_name} {self.first_name} {self.middle_name or ''}"
