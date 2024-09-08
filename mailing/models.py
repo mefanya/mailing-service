@@ -32,3 +32,10 @@ class Mailing(models.Model):
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"Рассылка {self.status} на {self.send_at}"
+    
+    class Meta:
+        verbose_name = "Рассылка"
+        verbose_name_plural = "Рассылки"
