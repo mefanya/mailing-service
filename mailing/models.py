@@ -1,5 +1,8 @@
 from django.db import models
 
+from client.models import Client
+from message.models import Message
+
 NULLEBLE = {"null": True, "blank": True}
 
 
@@ -16,10 +19,16 @@ class Mailing(models.Model):
         ("running", "Запущена"),
     ]
 
+    clients = models.ManyToManyField(
+        Client, verbose_name="Клиенты", related_name="mailing_list"
+    )
+    messages = models.OneToOneField(
+        Message, on_delete=models.CASCADE, verbose_name="Сообщения"
+    )
+
     send_at = models.DateTimeField(
         **NULLEBLE,
-        DATETIME_FORMAT="%d.%m.%y %H:%M",
-        verbose_name="Дата и время отправки"
+        verbose_name="Дата и время отправки",
     )
     frequency = models.PositiveIntegerField(default=1, verbose_name="Частота отправки")
     periodicity = models.CharField(
@@ -32,10 +41,10 @@ class Mailing(models.Model):
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return f"Рассылка {self.status} на {self.send_at}"
-    
+
     class Meta:
         verbose_name = "Рассылка"
         verbose_name_plural = "Рассылки"

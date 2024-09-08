@@ -1,9 +1,12 @@
-from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
+from django.conf.urls.static import static
+from attempt.views import attempt_list
+from mailing.apps import MailingConfig
+
+from congig import settings
+
+app_name = MailingConfig.name
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("mailing.urls", namespace="mailing")),
-    path("client/", include("client.urls", namespace="client")),
-    path("message/", include("message.urls", namespace="message")),
-]
+    path("", attempt_list, name="attempt_list"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
