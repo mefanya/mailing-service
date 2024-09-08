@@ -6,5 +6,4 @@ urlpatterns = [
     path("", include("mailing.urls", namespace="mailing")),
     path("client/", include("client.urls", namespace="client")),
     path("message/", include("message.urls", namespace="message")),
-    path("attempt/", include("attempt.urls", namespace="attempt")),
 ]
