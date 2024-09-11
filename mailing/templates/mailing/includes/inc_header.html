@@ -1,0 +1,9 @@
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    {% if request.path == '/' %}
+    <h2 class="display-4 fw-normal">Рассылки</h2> 
+    <p class="fs-5 text-muted">
+        В данном разделе создаются рассылки.
+    </p>
+    <a href="{% url 'mailing:mailing_create' %}" class="btn btn-success" role="button">Создать рассылку</a>
+    {% endif %}
+</div>

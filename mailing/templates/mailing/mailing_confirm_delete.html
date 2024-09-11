@@ -1,0 +1,34 @@
+{% extends "mailing/base.html" %} {% block content %}
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="my-0 fw-normal">Удаление рассылки</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="border p-4 rounded bg-light">
+                        {% csrf_token %}
+                        <p class="card-text">Вы действительно хотите удалить рассылку? <br><br> 
+                            После удаления восстановить ее будет не возможно. 
+                            Все несохраненные данные будут утеряны! <br><br> 
+                        <button type="submit" class="btn btn-primary">
+                            Удалить рассылку
+                        </button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a
+                        href="{% url 'mailing:mailing_list' %}"
+                        class="btn btn-secondary"
+                        role="button"
+                        >Назад к списку рассылок</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

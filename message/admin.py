@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from message.models import Message
+
+
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "subject",
+    )
+    list_filter = ("subject",)

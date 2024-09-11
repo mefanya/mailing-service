@@ -20,15 +20,16 @@ class MailingDetailView(DetailView):
 
 class MailingCreateView(CreateView):
     model = Mailing
-    fields = ("send_at", "frequency", "periodicity", "status")
-    success_url = reverse_lazy("mailing:list")
+    fields = ("clients", "messages", "send_at", "frequency", "periodicity", "status")
+    success_url = reverse_lazy("mailing:mailing_list")
 
 
 class MailingUpdateView(UpdateView):
-    fields = ("send_at", "frequency", "periodicity", "status")
-    success_url = reverse_lazy("mailing:list")
+    model = Mailing
+    fields = ("clients", "messages", "send_at", "frequency", "periodicity", "status")
+    success_url = reverse_lazy("mailing:mailing_list")
 
 
 class MailingDeleteView(DeleteView):
     model = Mailing
-    success_url = reverse_lazy("mailing:list")
+    success_url = reverse_lazy("mailing:mailing_list")

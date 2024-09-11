@@ -1,3 +1,17 @@
 from django.contrib import admin
 
-# Register your models here.
+from attempt.models import Attempt
+
+
+@admin.register(Attempt)
+class AttemptAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "status",
+        "mailing",
+        "time_of_attempted",
+    )
+    list_filter = (
+        "status",
+        "mailing",
+    )

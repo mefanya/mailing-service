@@ -1,0 +1,37 @@
+{% extends "mailing/base.html" %} 
+{% block content %}
+
+<div class="container">
+    <div class="row md-3 mb-3 text-center">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-0 fw-normal">Рассылка {{ object.id }}</h4>
+                </div>
+                <div class="card-body">
+                    <ul
+                        class="list-unstyled mt-2 mb-4"
+                        style="text-align: left"
+                    >
+                        <li>Создана: {{ mailing.created_at }}</li>
+                        <li>Время отправки: {{ mailing.send_at }}</li>
+                        <li>Статус: {{ mailing.get_status_display }}</li>
+                        <br />
+                        <li>Тема рассылки: {{ mailing.messages.subject }}</li>
+                        <br />
+                        <li>Сообщение: {{ mailing.messages }}</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group">
+                        <a href="" class="btn btn-primary" role="button">Отправить</a>
+                        <a href="" class="btn btn-warning" role="button">Изменить</a>
+                        <a href="" class="btn btn-danger" role="button">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
