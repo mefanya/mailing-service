@@ -14,22 +14,22 @@ class MessageListView(ListView):
     model = Message
 
 
-class MailingDetailView(DetailView):
+class MessageDetailView(DetailView):
     model = Message
 
 
-class MailingCreateView(CreateView):
-    model = Message
-    fields = ("subject", "textbox")
-    success_url = reverse_lazy("message:message_list")
-
-
-class MailingUpdateView(UpdateView):
+class MessageCreateView(CreateView):
     model = Message
     fields = ("subject", "textbox")
     success_url = reverse_lazy("message:message_list")
 
 
-class MailingDeleteView(DeleteView):
+class MessageUpdateView(UpdateView):
+    model = Message
+    fields = ("subject", "textbox")
+    success_url = reverse_lazy("message:message_list")
+
+
+class MessageDeleteView(DeleteView):
     model = Message
     success_url = reverse_lazy("message:message_list")

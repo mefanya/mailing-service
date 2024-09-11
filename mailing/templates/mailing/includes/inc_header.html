@@ -5,5 +5,11 @@
         В данном разделе создаются рассылки.
     </p>
     <a href="{% url 'mailing:mailing_create' %}" class="btn btn-success" role="button">Создать рассылку</a>
+    {% elif request.path == '/message/' %}
+    <h2 class="display-4 fw-normal">Сообщения</h2> 
+    <p class="fs-5 text-muted">
+        В данном разделе создаются сообщения.
+    </p>
+    <a href="{% url 'message:message_create' %}" class="btn btn-success" role="button">Создать сообщение</a>
     {% endif %}
 </div>
