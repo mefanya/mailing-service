@@ -1,11 +1,9 @@
 from django.urls import path
 from attempt.views import attempt_list
-from mailing.apps import MailingConfig
+from attempt.apps import AttemptConfig
 
-from congig import settings
-
-app_name = MailingConfig.name
+app_name = AttemptConfig.name
 
 urlpatterns = [
-    path("", attempt_list, name="attempt_list"),
+    path("attempts/", attempt_list, name="attempt_list"),
 ]
