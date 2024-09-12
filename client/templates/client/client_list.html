@@ -1,32 +1,38 @@
 {% extends "mailing/base.html" %} {% block content %}
 
 <div class="container">
-    <div class="row md-3 mb-3 text-center">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {% for client in object_list %}
         <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="my-0 fw-normal">Сообщение {{ object.id }}</h4>
+            <div class="card mb-3 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Клиент {{ client.id }}</h4>
                 </div>
                 <div class="card-body">
                     <ul
                         class="list-unstyled mt-2 mb-4"
                         style="text-align: left"
                     >
-                        <li>Тема письма: {{ message.subject }}</li>
-                        <br /><br />
-                        <li>Текст письма: <br />{{ message.textbox}}</li>
+                        <li>ФИО: {{ client.fio }}</li>
+                        <li>Почта: <br />{{ client.email}}</li>
                     </ul>
                 </div>
                 <div class="card-footer">
                     <div class="btn-group">
                         <a
-                            href="{% url 'message:message_update' message.pk %}"
+                            href="{% url 'client:client_detail' client.pk %}"
+                            class="btn btn-primary"
+                            role="button"
+                            >Посмотреть</a
+                        >
+                        <a
+                            href="{% url 'client:client_update' client.pk %}"
                             class="btn btn-warning"
                             role="button"
                             >Изменить</a
                         >
                         <a
-                            href="{% url 'message:message_delete' message.pk %}"
+                            href="{% url 'client:client_delete' client.pk %}"
                             class="btn btn-danger"
                             role="button"
                             >Удалить</a
@@ -35,6 +41,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 

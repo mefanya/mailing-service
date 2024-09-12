@@ -1,15 +1,30 @@
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
     {% if request.path == '/' %}
-    <h2 class="display-4 fw-normal">Рассылки</h2> 
-    <p class="fs-5 text-muted">
-        В данном разделе создаются рассылки.
-    </p>
-    <a href="{% url 'mailing:mailing_create' %}" class="btn btn-success" role="button">Создать рассылку</a>
+    <h2 class="display-4 fw-normal">Рассылки</h2>
+    <p class="fs-5 text-muted">В данном разделе создаются рассылки.</p>
+    <a
+        href="{% url 'mailing:mailing_create' %}"
+        class="btn btn-success"
+        role="button"
+        >Создать рассылку</a
+    >
     {% elif request.path == '/message/' %}
-    <h2 class="display-4 fw-normal">Сообщения</h2> 
-    <p class="fs-5 text-muted">
-        В данном разделе создаются сообщения.
-    </p>
-    <a href="{% url 'message:message_create' %}" class="btn btn-success" role="button">Создать сообщение</a>
+    <h2 class="display-4 fw-normal">Сообщения</h2>
+    <p class="fs-5 text-muted">В данном разделе создаются сообщения.</p>
+    <a
+        href="{% url 'message:message_create' %}"
+        class="btn btn-success"
+        role="button"
+        >Создать сообщение</a
+    >
+    {% elif request.path == '/clients/' %}
+    <h2 class="display-4 fw-normal">Клиенты</h2>
+    <p class="fs-5 text-muted">В данном разделе создаются клиенты.</p>
+    <a
+        href="{% url 'client:client_create' %}"
+        class="btn btn-success"
+        role="button"
+        >Создать клиента</a
+    >
     {% endif %}
 </div>

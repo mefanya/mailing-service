@@ -1,0 +1,35 @@
+{% extends "mailing/base.html" %} {% block content %}
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="my-0 fw-normal">
+                        {% if object %} Редактирование клиента {{ object.id }} 
+                        {% else %} Создание нового клиента {% endif %}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="border p-4 rounded bg-light">
+                        {% csrf_token %}
+                        <div class="form-group">{{ form.as_p }}</div>
+                        <button type="submit" class="btn btn-primary">
+                            {% if object %} Сохранить изменения 
+                            {% else %} Добавить клиента {% endif %}
+                        </button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a 
+                        href="{% url 'client:client_list' %}" 
+                        class="btn btn-secondary" 
+                        role="button">Назад к списку клиентов</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
